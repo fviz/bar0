@@ -2,6 +2,10 @@ $bg: #eeeeee;
 $bgLighter: #dbdbdb;
 $main: #1f1f1f;
 
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   margin: 0 auto;
   box-sizing: border-box;
@@ -55,6 +59,7 @@ header {
 
 .podcastTitle {
   font-size: 1.5em;
+  transition: color .2s;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -112,6 +117,7 @@ video {
 
 .podcast:hover {
     cursor: pointer;
+  z-index: 2;
 }
 
 
@@ -124,11 +130,9 @@ video {
   transform-style: preserve-3d;
   cursor: pointer;
   position: relative;
-    z-index: 2;
 }
 
 .card:hover {
-
 }
 
 .card.is-flipped {
@@ -138,16 +142,11 @@ video {
 .card__face {
   position: absolute;
   width: 100%;
-  transition: all .5s;
+  transition: background-color .5s;
   height: 100%;
-  transform-style: preserve-3d;
 
-  line-height: 260px;
-  color: white;
-  text-align: center;
-  font-weight: bold;
-  z-index: 2;
-  font-size: 40px;
+  transform-style: preserve-3d;
+  z-index: 3;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
@@ -159,6 +158,7 @@ video {
 .card__face--back {
   // background: #111;
   transform: rotateY(180deg);
+  padding: 20px;
 }
 
 .card__face:hover, .card.flipping .card__face {
@@ -172,3 +172,67 @@ video {
 ;
 }
 
+
+.podcast:hover, .podcast .card.is-flipped {
+  .podcastTitle {
+    color: white;
+  }
+  .card__face {
+    background: var(--card-color, #aaa);
+    color: white;
+  }
+}
+
+
+.player-container {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  width: 100vw;
+  padding-bottom: 40px;
+}
+
+.player {
+  width: 500px;
+  height: 100px;
+  border-radius: 5px;
+  background-color: white;
+  grid-template-columns: 1fr 2fr 1fr;
+  display: grid;
+
+  box-shadow: 0 0px 0.7px -16px rgba(0, 0, 0, 0.021),
+  0 0.8px 1.6px -16px rgba(0, 0, 0, 0.029),
+  0 2.1px 2.8px -16px rgba(0, 0, 0, 0.034),
+  0 4px 4.2px -16px rgba(0, 0, 0, 0.038),
+  0 6.5px 6px -16px rgba(0, 0, 0, 0.041),
+  0 9.7px 8.5px -16px rgba(0, 0, 0, 0.045),
+  0 13.8px 12.1px -16px rgba(0, 0, 0, 0.048),
+  0 19.2px 17.5px -16px rgba(0, 0, 0, 0.053),
+  0 27.1px 27px -16px rgba(0, 0, 0, 0.059),
+  0 48px 48px -16px rgba(0, 0, 0, 0.07);
+  transition: all .5s;
+
+  .center {
+    justify-content: space-around;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+
+    .slider {
+      width: 100%;
+    }
+  }
+
+  .title {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  &.inactive {
+    transform: translateY(150px);
+  }
+}

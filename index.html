@@ -13,9 +13,7 @@
 <body>
 
 <div class="app">
-
     <header>
-
         <div class="mainTitle">
             BARB
         </div>
@@ -25,59 +23,59 @@
             </div>
             <div>The four podcasts were produces throughout the first semester of 2020.</div>
         </div>
-
     </header>
 
     <div class="podcasts">
+        <podcast-card title="Bite the bit" color="#9e1fdb" :current-title="currentTitle">
+            <template v-slot:front>
+                <img src="images/bitethebit.png" alt="">
+            </template>
+            <template v-slot:back>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            </template>
+        </podcast-card>
 
-        <div class="podcast">
-            <div class="card">
-                <div class="card__face card__face--front">
-                    <img src="images/bitethebit.png" alt="">
-                </div>
-                <div class="card__face card__face--back"></div>
+        <podcast-card title="about:color" color="#3d4751" :current-title="currentTitle">
+            <template v-slot:front>
+                <video src="images/aboutcolor.mp4" alt="" autoplay>
+            </template>
+            <template v-slot:back>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            </template>
+        </podcast-card>
+
+        <podcast-card title="Roll the Dice" color="#d74a18" :current-title="currentTitle">
+            <template v-slot:front>
+                <img src="images/rollthedice.png" alt="">
+            </template>
+            <template v-slot:back>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            </template>
+        </podcast-card>
+
+        <podcast-card title="Bite the biiit" color="#7cb5eb" :current-title="currentTitle">
+            <template v-slot:front>
+                <img src="images/06-3401879.jpg" alt="">
+            </template>
+            <template v-slot:back>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            </template>
+        </podcast-card>
+    </div>
+
+    <div class="player-container">
+        <div class="player" :class="{inactive: currentTitle == null}">
+            <div class="left">
+
             </div>
-            <div class="podcastTitle">
-                Bite the bit
+            <div class="center">
+                <div class="title">{{currentTitle}}</div>
+                <input type="range" min="0" max="1" value="0" class="slider" id="myRange">
+            </div>
+            <div class="right">
+
             </div>
         </div>
-
-        <div class="podcast">
-            <div class="card">
-                <div class="card__face card__face--front">
-                    <video src="images/aboutcolor.mp4" alt="" autoplay>
-                </div>
-                <div class="card__face card__face--back"></div>
-            </div>
-            <div class="podcastTitle">
-                about:color
-            </div>
-        </div>
-
-        <div class="podcast">
-            <div class="card">
-                <div class="card__face card__face--front">
-                    <img src="images/rollthedice.png" alt="">
-                </div>
-                <div class="card__face card__face--back"></div>
-            </div>
-            <div class="podcastTitle">
-                Roll the Dice
-            </div>
-        </div>
-
-        <div class="podcast">
-            <div class="card">
-                <div class="card__face card__face--front">
-                    <img src="images/06-3401879.jpg" alt="">
-                </div>
-                <div class="card__face card__face--back"></div>
-            </div>
-            <div class="podcastTitle">
-                Bite the bit
-            </div>
-        </div>
-
     </div>
 </div>
 

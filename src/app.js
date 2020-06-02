@@ -1,19 +1,16 @@
 const Vue = require("vue");
 
-let vue = new Vue({
-    el: ".app",
-    data: {
-        message: " hello "
-    }
-});
 
 
-/** 
+
+/**
  * Fancy card
  */
-addEventListener('load', () => {
-    const podcasts = document.querySelectorAll('.podcast')
-    for (const podcast of podcasts) {
+Vue.component('podcast-card', {
+    props: ['title', 'color', 'currentTitle'],
+
+    mounted() {
+        const podcast = this.$el
         const height = podcast.clientHeight
         const width = podcast.clientWidth
 
@@ -23,7 +20,7 @@ addEventListener('load', () => {
             * With respect to the element
             * On mouseover
             */
-            
+
             /* Store the x position */
             const xVal = e.layerX
             /* Store the y position */
@@ -41,7 +38,7 @@ addEventListener('load', () => {
             const xRotation = -20 * ((yVal - height / 2) / height)
 
             /* Generate string for CSS transform property */
-            const string = 'perspective(500px) rotateX(' + xRotation + 'deg) rotateY(' + yRotation + 'deg)'
+            const string = 'scale(1.1) perspective(500px) rotateX(' + xRotation + 'deg) rotateY(' + yRotation + 'deg)'
 
             /* Apply the calculated transformation */
             podcast.style.transform = string
@@ -56,12 +53,46 @@ addEventListener('load', () => {
             podcast.style.transform = 'perspective(500px) rotateX(0) rotateY(0)'
             podcast.classList.remove('lifted')
         })
-    }
-    
-    const cards = document.querySelectorAll('.card')
-    for (const card of cards) {
-        card.addEventListener('click', () => {
-            card.classList.toggle('is-flipped');
-        });
-    }
+    },
+
+    methods: {
+        makeCurrent() {
+            if (this.currentTitle == this.title) {
+                this.$root.currentTitle = null
+            } else {
+                this.$root.currentTitle = this.title
+            }
+        }
+    },
+
+    computed: {
+        filpped() {
+            return this.currentTitle ==  this.title
+        }
+    },
+
+    template: `
+          <div class="podcast" @click="makeCurrent">
+                <div class="card" :class="{'is-flipped': filpped}" :style="{'--card-color': color}">
+                    <div class="card__face card__face--front">
+                        <slot name="front"></slot>
+                        <div class="podcastTitle">{{title}}</div>
+                    </div>
+                    <div class="card__face card__face--back">
+                        <slot name="back"></slot>
+                    </div>
+            </div>
+        </div>
+    `
 })
+
+
+let vue = new Vue({
+    el: ".app",
+    data: {
+        currentTitle: null,
+        currentAudioSrc: null,
+        duration: null,
+        progress: null
+    }
+});
