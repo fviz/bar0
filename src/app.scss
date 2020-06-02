@@ -33,6 +33,10 @@ header {
   grid-gap: 1em;
 }
 
+.mainTitle {
+  font-weight: bold;
+}
+
 .details {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -53,4 +57,34 @@ header {
   font-size: 1.5em;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+@media screen and (max-width: 900px) {
+  body {
+    width: 90vw;
+    height: auto;
+    display: block;
+  }
+
+  header {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    margin-top: 1em;
+  }
+
+  .podcasts {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 1em;
+  }
+
+  .podcastTitle {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .details {
+    grid-template-columns: 1fr;
+  }
 }
