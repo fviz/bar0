@@ -59,7 +59,7 @@ header {
   text-transform: uppercase;
 }
 
-@media screen and (max-width: 900px) {
+@media (max-width: 900px) {
   body {
     width: 90vw;
     height: auto;
