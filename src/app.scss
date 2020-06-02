@@ -1,5 +1,5 @@
-$bg: #E8E7D8;
-$main: #FF3100;
+$bg: #093664;
+$main: #e2c00f;
 
 html, body {
   margin: 0;
@@ -42,9 +42,8 @@ h2 {
 header {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  padding: 4em;
-  padding-bottom: 6em;
-  background-color: rgba(57, 12, 12, 0.1);
+  padding: 4em 4em 6em;
+  background-color: rgba(0, 0, 0, 0.15);
 
   h2 {
     grid-column: span 2;
