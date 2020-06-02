@@ -9,15 +9,28 @@ html, body {
   color: $main;
   font-family: "Helvetica Neue", sans-serif;
   font-weight: 300;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 80vw;
+
+}
+
+.app {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-gap: 4em;
 }
 
 header {
   display: grid;
   grid-template-rows: auto auto;
   grid-gap: 1em;
-  margin-bottom: 8em;
-  margin-top: 4em;
 }
 
 .details {
