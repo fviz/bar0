@@ -127,14 +127,19 @@ let vue = new Vue({
                 sound.stop()
             }
 
-            sound = new Howl({
-                src: [src]
-            })
+            /**
+             * When we're not closing the player
+             */
+            if (src != null) {
+                sound = new Howl({
+                    src: [src]
+                })
 
-            sound.on('load', () => {
-                this.duration = sound.duration()
-            });
-            sound.play();
+                sound.on('load', () => {
+                    this.duration = sound.duration()
+                });
+                sound.play();
+            }
         }
     }
 });
