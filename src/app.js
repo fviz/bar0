@@ -1,5 +1,5 @@
 const Vue = require("vue");
-
+const {Howl, Howler} = require('howler')
 
 
 
@@ -7,7 +7,7 @@ const Vue = require("vue");
  * Fancy card
  */
 Vue.component('podcast-card', {
-    props: ['title', 'color', 'currentTitle'],
+    props: ['title', 'color', 'currentTitle', 'url'],
 
     mounted() {
         const podcast = this.$el
@@ -59,8 +59,10 @@ Vue.component('podcast-card', {
         makeCurrent() {
             if (this.currentTitle == this.title) {
                 this.$root.currentTitle = null
+                this.$root.currentAudioSrc = null
             } else {
                 this.$root.currentTitle = this.title
+                this.$root.currentAudioSrc = this.url
             }
         }
     },
@@ -87,12 +89,52 @@ Vue.component('podcast-card', {
 })
 
 
+let sound
+
+
 let vue = new Vue({
     el: ".app",
     data: {
         currentTitle: null,
-        currentAudioSrc: null,
-        duration: null,
-        progress: null
+        currentAudioSrc: '',
+        duration: 0,
+        progress: 0
+    },
+
+    mounted() {
+        setInterval(() => {
+            if (this.currentAudioSrc && sound) {
+                this.progress = sound.seek()
+            }
+        }, 50)
+    },
+
+    methods: {
+        scrub(e) {
+            if (!sound.playing()) {
+                sound.play()
+            }
+
+            const seconds = e.target.value
+            console.log(seconds)
+            sound.seek(seconds)
+        }
+    },
+
+    watch: {
+        currentAudioSrc(src) {
+            if (sound) {
+                sound.stop()
+            }
+
+            sound = new Howl({
+                src: [src]
+            })
+
+            sound.on('load', () => {
+                this.duration = sound.duration()
+            });
+            sound.play();
+        }
     }
 });

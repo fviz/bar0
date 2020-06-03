@@ -26,7 +26,7 @@
     </header>
 
     <div class="podcasts">
-        <podcast-card title="Bite the bit" color="#9e1fdb" :current-title="currentTitle">
+        <podcast-card title="Bite the bit" color="#9e1fdb" url="" :current-title="currentTitle" >
             <template v-slot:front>
                 <img src="images/bitethebit.png" alt="">
             </template>
@@ -35,7 +35,7 @@
             </template>
         </podcast-card>
 
-        <podcast-card title="about:color" color="#3d4751" :current-title="currentTitle">
+        <podcast-card title="about:color" color="#3d4751" url="" :current-title="currentTitle">
             <template v-slot:front>
                 <video src="images/aboutcolor.mp4" alt="" autoplay>
             </template>
@@ -44,7 +44,7 @@
             </template>
         </podcast-card>
 
-        <podcast-card title="Roll the Dice" color="#d74a18" :current-title="currentTitle">
+        <podcast-card title="Roll the Dice" color="#d74a18" url="./audio/Roll The Dice podcast.mp3" :current-title="currentTitle">
             <template v-slot:front>
                 <img src="images/rollthedice.png" alt="">
             </template>
@@ -53,7 +53,7 @@
             </template>
         </podcast-card>
 
-        <podcast-card title="Bite the biiit" color="#7cb5eb" :current-title="currentTitle">
+        <podcast-card title="Bite the biiit" color="#7cb5eb" url="" :current-title="currentTitle">
             <template v-slot:front>
                 <img src="images/06-3401879.jpg" alt="">
             </template>
@@ -70,7 +70,7 @@
             </div>
             <div class="center">
                 <div class="title">{{currentTitle}}</div>
-                <input type="range" min="0" max="1" value="0" class="slider" id="myRange">
+                <input type="range" min="0" :max="duration" :value="progress" step="any" class="slider" id="myRange" @input="scrub">
             </div>
             <div class="right">
 
