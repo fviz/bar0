@@ -164,6 +164,10 @@ video {
   transform-style: preserve-3d;
   cursor: pointer;
   position: relative;
+
+  a {
+    color: white
+  }
 }
 
 .card:hover {
