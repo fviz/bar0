@@ -18,8 +18,7 @@
             BARB
         </div>
         <div class="details">
-            <div>BARB is a collection of podcasts produced by the sophomore Interaction Design students of ArtEZ. The
-                class
+            <div>BARB is a collection of podcasts produced by the sophomore Interaction Design students of ArtEZ. The class
                 Sound Design is conducted by Natalia Dominguez Rangel.
             </div>
             <div>The four podcasts were produced throughout the first semester of 2020.</div>
@@ -27,23 +26,14 @@
     </header>
 
     <div class="podcasts">
-        <podcast-card title="Bite the bit" color="#9e1fdb" url="./audio/btb.mp3" :current-title="currentTitle">
+        <podcast-card title="Bite the bit" color="#9e1fdb" url="./audio/btb.mp3" :current-title="currentTitle" >
             <template v-slot:front>
                 <img src="images/bitethebit.png" alt="">
             </template>
             <template v-slot:back>
-                <strong>Bite the Bit</strong> is a podcast about chiptune sound and music, and how it has evolved and
-                branched out through decades of experimentation and creativity.
+                <strong>Bite the Bit</strong> is a podcast about chiptune sound and music, and how it has evolved and branched out through decades of experimentation and creativity.
                 <br><br>
-<<<<<<< HEAD
-<<<<<<< HEAD
                 Brought to you by <strong>Francisco Vizentin</strong> and <strong>Guido van der Kooij</strong>
-=======
-                Brought to you by <strong>Francisco Vizentin</strong> and <strong>Guido van der Kooij</strong><br>
->>>>>>> 287fc9e... Smaller files, better downloads
-=======
-                Brought to you by <strong>Francisco Vizentin</strong> and <strong>Guido van der Kooij</strong>
->>>>>>> e817263... Revert "Download hi-res versions of the podcasts"
             </template>
         </podcast-card>
 
@@ -52,36 +42,24 @@
                 <video src="images/aboutcolor.mp4" alt="" id="acVideo" autoplay loop muted>
             </template>
             <template v-slot:back>
-                Join us on our sound walk trough the supermarket. Create your own space while listening to the
-                colors.<br>
+                Join us on our sound walk trough the supermarket. Create your own space while listening to the colors.<br>
                 <br>
-<<<<<<< HEAD
-<<<<<<< HEAD
                 Created by Marieke Leene and Aafje van Grieken
-=======
-                Created by Marieke Leene and Aafje van Grieken<br>
->>>>>>> 287fc9e... Smaller files, better downloads
-=======
-                Created by Marieke Leene and Aafje van Grieken
->>>>>>> e817263... Revert "Download hi-res versions of the podcasts"
             </template>
         </podcast-card>
 
-        <podcast-card title="Roll the Dice" color="#d74a18" url="./audio/Roll The Dice podcast.mp3"
-                      :current-title="currentTitle">
+        <podcast-card title="Roll the Dice" color="#d74a18" url="./audio/Roll The Dice podcast.mp3" :current-title="currentTitle">
             <template v-slot:front>
                 <img src="images/rollthedice.png" alt="">
             </template>
             <template v-slot:back>
-                Get ready for a twisted story about one really dangerous game. It will take you through the city, where
-                money decide everything and all can fall apart after one brief move. We created different soundscapes
-                that take you on these journey with our players, will you solve the biggest mystery of this podcast?
+                Get ready for a twisted story about one really dangerous game. It will take you through the city, where money decide everything and all can fall apart after one brief move. We created different soundscapes that take you on these journey with our players, will you solve the biggest mystery of this podcast?
 
                 <br><br>Credits:<br><br>
 
                 Monopoly Plus Soundtrack<br>
                 Sunny by New York Jazz lounge<br>
-                Jingle by Stephan van der Woerd<br>
+                Jingle by  Stephan van der Woerd<br>
                 <br>
                 Big thanks to Beeld en Geluid archives for making a lot of sounds available for us!
 
@@ -119,14 +97,6 @@
                 What do they want<br>
                 Why are they calling you<br>
                 Who are they calling<br>
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 287fc9e... Smaller files, better downloads
-=======
-
->>>>>>> e817263... Revert "Download hi-res versions of the podcasts"
             </template>
         </podcast-card>
     </div>
@@ -136,10 +106,9 @@
             <div class="left">
 
             </div>
-            <div class="center" :class="{loading: loading}">
+            <div class="center" :class="{loading: loading}" >
                 <div class="title">{{currentTitle}}</div>
-                <input type="range" min="0" :max="duration" :value="progress" step="any" class="slider" id="myRange"
-                       @input="scrub">
+                <input type="range" min="0" :max="duration" :value="progress" step="any" class="slider" id="myRange" @input="scrub">
             </div>
             <div class="right">
 
