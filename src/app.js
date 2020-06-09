@@ -18,12 +18,12 @@ Vue.component('podcast-card', {
         const string = 'perspective(500px)'
         podcast.style.transform = string
 
-        podcast.addEventListener('mousemove', e => {
-            /*
-            * Get position of mouse cursor
-            * With respect to the element
-            * On mouseover
-            */
+        function onMouseOrTouchMove(e) {
+          /*
+           * Get position of mouse cursor
+           * With respect to the element
+           * On mouseover
+           */
 
             /* Store the x position */
             const xVal = e.layerX
@@ -46,7 +46,10 @@ Vue.component('podcast-card', {
 
             /* Apply the calculated transformation */
             podcast.style.transform = string
-        })
+        }
+
+        podcast.addEventListener('mousemove', onMouseOrTouchMove)
+        podcast.addEventListener('touchmove', onMouseOrTouchMove)
 
         podcast.addEventListener('mouseover', e => {
             podcast.classList.add('lifted')
