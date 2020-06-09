@@ -143,3 +143,6 @@ let vue = new Vue({
         }
     }
 });
+
+let acVideo = document.querySelector("#acVideo");
+acVideo.play();
