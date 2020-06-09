@@ -52,6 +52,7 @@ header {
   flex-direction: column;
   grid-template-rows: 1fr;
   grid-gap: 1em;
+
 }
 
 .mainTitle {
@@ -60,6 +61,14 @@ header {
 
 .details {
   grid-column: 1;
+}
+
+.details a {
+  color: black;
+}
+
+.details a:hover {
+  margin-left: 4px;
 }
 
 .details div {
