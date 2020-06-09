@@ -13,17 +13,15 @@
 <body>
 
 <div class="app">
-    <header>
-        <div class="mainTitle">
-            BARB
+    <div class="mainTitle">
+        BARB
+    </div>
+    <div class="details">
+        <div>BARB is a collection of podcasts produced by the sophomore Interaction Design students of ArtEZ. The class
+            Sound Design is conducted by Natalia Dominguez Rangel.
         </div>
-        <div class="details">
-            <div>BARB is a collection of podcasts produced by the sophomore Interaction Design students of ArtEZ. The class
-                Sound Design is conducted by Natalia Dominguez Rangel.
-            </div>
-            <div>The four podcasts were produced throughout the first semester of 2020.</div>
-        </div>
-    </header>
+        <div>The four podcasts were produced throughout the first semester of 2020.</div>
+    </div>
 
     <div class="podcasts">
         <podcast-card title="Bite the bit" color="#9e1fdb" url="./audio/btb.mp3" :current-title="currentTitle" >
@@ -39,12 +37,12 @@
 
         <podcast-card title="about:color" color="#314465" url="./audio/about_color.mp3" :current-title="currentTitle">
             <template v-slot:front>
-                <video src="images/aboutcolor.mp4" alt="" id="acVideo" autoplay loop muted>
+                <video src="images/aboutcolor.mp4" alt="" id="acVideo" autoplay loop muted/>
             </template>
             <template v-slot:back>
                 Join us on our sound walk trough the supermarket. Create your own space while listening to the colors.<br>
                 <br>
-                Created by Marieke Leene and Aafje van Grieken
+                Created by <b>Marieke Leene</b> and <b>Aafje van Grieken</b>
             </template>
         </podcast-card>
 
@@ -78,15 +76,18 @@
 
     <div class="player-container">
         <div class="player" :class="{inactive: currentTitle == null}">
-            <div class="left">
-
-            </div>
-            <div class="center" :class="{loading: loading}" >
+            <div class="loading-container" :class="{loading: loading}">
                 <div class="title">{{currentTitle}}</div>
-                <input type="range" min="0" :max="duration" :value="progress" step="any" class="slider" id="myRange" @input="scrub">
-            </div>
-            <div class="right">
 
+                <div class="left">
+                    <img @click="pause" class="play-pause" v-if="!paused" src="./images/pause.svg" alt="">
+                    <img @click="play" class="play-pause" v-if="paused" src="./images/play2.svg" alt="">
+                </div>
+                <div class="center">
+                    <input type="range" min="0" :max="duration" :value="progress" step="any" class="slider" id="myRange" @input="scrub">
+                </div>
+                <div class="right">
+                </div>
             </div>
         </div>
     </div>

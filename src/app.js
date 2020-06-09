@@ -99,7 +99,8 @@ let vue = new Vue({
         currentAudioSrc: '',
         duration: 0,
         progress: 0,
-        loading: false
+        loading: false,
+        paused: false
     },
 
     mounted() {
@@ -112,13 +113,19 @@ let vue = new Vue({
 
     methods: {
         scrub(e) {
-            if (!sound.playing()) {
-                sound.play()
-            }
-
             const seconds = e.target.value
             console.log(seconds)
             sound.seek(seconds)
+        },
+
+        play() {
+            sound.play()
+            this.paused = false
+        },
+
+        pause() {
+            sound.pause()
+            this.paused = true
         }
     },
 
@@ -137,6 +144,7 @@ let vue = new Vue({
              */
             if (src != null) {
                 this.loading = true
+                this.paused = false
 
                 sound = new Howl({
                     src: [src]

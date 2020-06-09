@@ -16,7 +16,6 @@ html, body {
   font-family: "Helvetica Neue", sans-serif;
   font-weight: 300;
   width: 100%;
-  height: 100%;
 }
 
 body {
@@ -24,7 +23,8 @@ body {
   justify-content: center;
   align-items: center;
   width: 80vw;
-
+  margin-top: 100px ;
+  margin-bottom: 150px;
 }
 
 .app, .podcasts {
@@ -34,13 +34,14 @@ body {
 
 .app {
   display: grid;
-  grid-template-rows: auto auto;
-  grid-gap: 4em;
+  grid-gap: 20px 4em;
+  grid-template-columns: 1fr 2fr;
 }
 
 header {
-  display: grid;
-  grid-template-rows: auto auto;
+  display: flex;
+  flex-direction: column;
+  grid-template-rows: 1fr;
   grid-gap: 1em;
 }
 
@@ -49,15 +50,20 @@ header {
 }
 
 .details {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1em;
+  grid-column: 1;
+}
+
+.details div {
+  margin-bottom: 20px;
 }
 
 .podcasts {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 2em;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1em 5em !important;
+  width: max-content !important;
+  margin: 0 !important;
+  padding-top: 2px;
 }
 
 .card__face--front > img {
@@ -65,10 +71,10 @@ header {
 }
 
 .podcastTitle {
-  font-size: 1.5em;
-  transition: color .2s;
+  transition: color 0.2s;
   font-weight: bold;
   text-transform: uppercase;
+  padding: 10px;
 }
 
 @media (max-width: 1500px) {
@@ -79,9 +85,7 @@ header {
   }
 
   header {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    margin-top: 1em;
+    //grid-template-rows: auto auto;
   }
 
   .podcasts {
@@ -95,13 +99,10 @@ header {
   .details {
     grid-template-columns: 1fr;
     max-width: 600px;
-    margin: 0 auto;
   }
 
   header {
-    grid-template-columns: 1fr;
     max-width: 800px;
-    margin: 4em auto 0;
   }
 
   .podcastTitle {
@@ -109,12 +110,23 @@ header {
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 800px) {
   .podcasts {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(4, auto);
   }
 }
+
+@media screen and (max-width: 1250px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .podcast {
+    margin: 0 !important;
+  }
+}
+
 
 video {
   width: 100%;
@@ -159,6 +171,7 @@ video {
 
 .card.is-flipped {
   transform: rotateY(-180deg);
+  z-index: 99;
 }
 
 .card__face {
@@ -221,8 +234,6 @@ video {
   height: 100px;
   border-radius: 5px;
   background-color: white;
-  grid-template-columns: 1fr 3fr 1fr;
-  display: grid;
 
   box-shadow: 0 0px 0.7px -16px rgba(0, 0, 0, 0.021),
   0 0.8px 1.6px -16px rgba(0, 0, 0, 0.029),
@@ -236,9 +247,27 @@ video {
   0 48px 48px -16px rgba(0, 0, 0, 0.07);
   transition: all .5s;
 
+  .loading-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 100%;
+    padding: 20px 0  25px 0;
+  }
+
+  .title {
+    grid-row: 1;
+    grid-column: 1 / span 3;
+  }
+
+  .left {
+    display: flex;
+    justify-content: center;
+  }
+
   .center {
     justify-content: space-around;
-    padding: 20px 0;
+    padding: 0px 0;
     display: flex;
     align-items: center;
     height: 100%;
@@ -272,4 +301,9 @@ video {
   to {
     opacity: 0;
   }
+}
+
+
+.play-pause {
+  width: 20px;
 }
