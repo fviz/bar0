@@ -89,7 +89,6 @@ Vue.component('podcast-card', {
                         <br>
                         <a download :href="url">Download podcast</a>
                         <br>
-                        <br>
                     </div>
             </div>
         </div>

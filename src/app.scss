@@ -8,6 +8,15 @@ $main: #1f1f1f;
   box-sizing: border-box;
 }
 
+a, a:visited {
+  color: white;
+  transition: all 200ms;
+}
+
+a:hover {
+  margin-left: 1em;
+}
+
 html, body {
   margin: 0 auto;
   box-sizing: border-box;
