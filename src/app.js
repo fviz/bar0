@@ -98,7 +98,8 @@ let vue = new Vue({
         currentTitle: null,
         currentAudioSrc: '',
         duration: 0,
-        progress: 0
+        progress: 0,
+        loading: false
     },
 
     mounted() {
@@ -123,19 +124,26 @@ let vue = new Vue({
 
     watch: {
         currentAudioSrc(src) {
+            /**
+             * Always stop the current one
+             */
             if (sound) {
                 sound.stop()
+                Howler.unload()
             }
 
             /**
              * When we're not closing the player
              */
             if (src != null) {
+                this.loading = true
+
                 sound = new Howl({
                     src: [src]
                 })
 
                 sound.on('load', () => {
+                    this.loading = false
                     this.duration = sound.duration()
                 });
                 sound.play();
