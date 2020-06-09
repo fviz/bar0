@@ -14,6 +14,10 @@ Vue.component('podcast-card', {
         const height = podcast.clientHeight
         const width = podcast.clientWidth
 
+        // We need to do this to force a recalc. The overflow of the back side caused weird bugs in chrome
+        const string = 'perspective(500px)'
+        podcast.style.transform = string
+
         podcast.addEventListener('mousemove', e => {
             /*
             * Get position of mouse cursor
@@ -82,6 +86,10 @@ Vue.component('podcast-card', {
                     </div>
                     <div class="card__face card__face--back">
                         <slot name="back"></slot>
+                        <br>
+                        <a href="{{this.url}}">Download podcast</a>
+                        <br>
+                        <br>
                     </div>
             </div>
         </div>

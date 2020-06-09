@@ -192,6 +192,7 @@ video {
 
 .card__face--back {
   // background: #111;
+  overflow: scroll;
   transform: rotateY(180deg);
   padding: 20px;
 }
