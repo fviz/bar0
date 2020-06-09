@@ -81,7 +81,7 @@
             <div class="left">
 
             </div>
-            <div class="center">
+            <div class="center" :class="{loading: loading}" >
                 <div class="title">{{currentTitle}}</div>
                 <input type="range" min="0" :max="duration" :value="progress" step="any" class="slider" id="myRange" @input="scrub">
             </div>

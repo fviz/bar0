@@ -258,3 +258,18 @@ video {
     transform: translateY(150px);
   }
 }
+
+
+.loading {
+  animation: pulse .5s infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
