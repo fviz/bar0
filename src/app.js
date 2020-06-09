@@ -87,7 +87,8 @@ Vue.component('podcast-card', {
                     <div class="card__face card__face--back">
                         <slot name="back"></slot>
                         <br>
-                        <a href="{{this.url}}">Download podcast</a>
+                        <br>
+                        <a :href="url" download>Download podcast</a>
                         <br>
                         <br>
                     </div>
