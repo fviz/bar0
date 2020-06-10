@@ -36,7 +36,7 @@
     <div class="podcasts">
         <podcast-card title="Bite the Bit" color="#9e1fdb" url="./audio/btb.mp3" :current-title="currentTitle" >
             <template v-slot:front>
-                <img src="images/bitethebit.png" alt="">
+                <img src="images/cover/bitethebit.png" alt="">
             </template>
             <template v-slot:back>
                 <strong>Bite the Bit</strong> is a podcast about chiptune sound and music, and how it has evolved and branched out through decades of experimentation and creativity.
@@ -47,7 +47,7 @@
 
         <podcast-card title="about:color" color="#314465" url="./audio/about-color.mp3" :current-title="currentTitle">
             <template v-slot:front>
-                <img src="images/aboutcolor.gif" alt="">
+                <img src="images/cover/aboutcolor.gif" alt="">
             </template>
             <template v-slot:back>
                 Join us on our sound walk trough the supermarket. Create your own space while listening to the colors.<br>
@@ -58,7 +58,7 @@
 
         <podcast-card title="Roll the Dice" color="#d74a18" url="./audio/Roll The Dice podcast.mp3" :current-title="currentTitle">
             <template v-slot:front>
-                <img src="images/rollthedice.png" alt="">
+                <img src="images/cover/rollthedice.png" alt="">
             </template>
             <template v-slot:back>
                 Get ready for a twisted story about one really dangerous game. It will take you through the city, where money decide everything and all can fall apart after one brief move. We created different soundscapes that take you on these journey with our players, will you solve the biggest mystery of this podcast?
@@ -76,7 +76,7 @@
 
         <podcast-card title="BEACH 2020" color="#7cb5eb" url="./audio/beach2020.mp3" :current-title="currentTitle">
             <template v-slot:front>
-                <img src="images/06-3401879.jpg" alt="">
+                <img src="images/cover/beach2020.jpg" alt="">
             </template>
             <template v-slot:back>
                 It's a phone call<br>
@@ -115,8 +115,8 @@
                 <div class="title">{{currentTitle}}</div>
 
                 <div class="left">
-                    <img @click="pause" class="play-pause" v-if="!paused" src="./images/pause.svg" alt="">
-                    <img @click="play" class="play-pause" v-if="paused" src="./images/play2.svg" alt="">
+                    <img @click="pause" class="play-pause" v-if="!paused" src="images/asset/pause.svg" alt="">
+                    <img @click="play" class="play-pause" v-if="paused" src="images/asset/play2.svg" alt="">
                 </div>
                 <div class="center">
                     <input type="range" min="0" :max="duration" :value="progress" step="any" class="slider" id="myRange" @input="scrub">
